@@ -47,7 +47,7 @@
       <div class="container mx-auto px-4 mt-0">
         <!-- Glass nav bar  -->
         <div
-          class="max-w-5xl mx-auto flex items-center justify-between h-15 px-4 sm:px-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-4xl shadow-[0_8px_30px_rgba(0,0,0,.25)]"
+          class="max-w-5xl mx-auto flex items-center justify-between h-15 px-4 sm:px-6 rounded-3xl border border-white/15 bg-white/5 backdrop-blur-4xl shadow-[0_8px_30px_rgba(0,0,0,.25)]"
         >
           <!-- Right side: Logo -->
           <a href="index.html" class="flex items-center">
@@ -884,59 +884,294 @@
         </div>
       </section>
 
-      <!-- CTA / CONTACT -->
+      <!-- BLOG / ARTICLES SECTION -->
       <section
-        id="contact"
-        class="py-20 bg-[#EEEEEE]"
-        aria-labelledby="cta-title"
+        id="blog"
+        class="py-20 bg-[#020308] text-[#F9FAFB]"
+        aria-labelledby="blog-title"
       >
         <div class="container mx-auto px-4">
+          <!-- Heading -->
+          <div class="max-w-3xl ml-auto text-right mb-10 fade-in-up">
+            <p
+              class="text-xs font-semibold tracking-[0.3em] uppercase text-[#F6C90E] mb-2"
+            >
+              הבלוג שלנו
+            </p>
+            <h2
+              id="blog-title"
+              class="text-3xl md:text-4xl font-black mb-3 leading-tight"
+            >
+              תוכן שיעזור לכם<br class="hidden md:block" />
+              להתאמן חכם יותר.
+            </h2>
+            <p class="text-sm md:text-base text-[#E5E7EB]/70">
+              טיפים להורים, הסברים על קיקבוקס ותחרויות, וכושר מנטלי ופיזי – הכל
+              מאותו מאמן שמלווה אתכם גם באימונים.
+            </p>
+          </div>
+
+          <!-- Layout: featured + list -->
           <div
-            class="relative bg-gradient-to-br from-[#303841] to-[#3a4149] rounded-3xl p-10 md:p-16 text-center shadow-2xl overflow-hidden"
+            class="fade-in-up grid gap-6 lg:grid-cols-[1.1fr_1.1fr] items-stretch rounded-3xl border border-white/10 bg-gradient-to-br from-[#050814] via-[#020617] to-[#050814] p-6 md:p-8 shadow-[0_22px_70px_rgba(0,0,0,0.85)] relative overflow-hidden"
+            style="transition-delay: 0.1s"
           >
+            <!-- subtle grid bg -->
             <div
-              class="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-[#F6C90E]/10 blur-3xl"
+              class="pointer-events-none absolute inset-0 opacity-[0.12]"
+              style="
+                background-image: linear-gradient(
+                    to right,
+                    rgba(148, 163, 184, 0.25) 1px,
+                    transparent 1px
+                  ),
+                  linear-gradient(
+                    to bottom,
+                    rgba(148, 163, 184, 0.25) 1px,
+                    transparent 1px
+                  );
+                background-size: 80px 80px;
+              "
             ></div>
 
+            <!-- FEATURED ARTICLE -->
+            <article
+              class="relative z-10 group rounded-3xl overflow-hidden border border-white/12 bg-black/40 backdrop-blur-xl flex flex-col h-full"
+            >
+              <!-- background image -->
+              <div
+                class="absolute inset-0 bg-[url('./assets/blog-post-1.jpg')] bg-cover bg-center"
+              ></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/65 to-black/95"
+              ></div>
+
+              <!-- content -->
+              <div
+                class="relative z-10 flex flex-col justify-between h-full p-6 md:p-8"
+              >
+                <div class="space-y-4 text-right">
+                  <div class="flex items-center justify-end gap-2 text-[11px]">
+                    <span
+                      class="rounded-full bg-[#F6C90E]/20 px-3 py-1 text-[#F6C90E] font-medium"
+                    >
+                      כתבת עומק
+                    </span>
+                  </div>
+
+                  <h3
+                    class="text-2xl md:text-3xl font-black leading-tight group-hover:text-[#F6C90E] transition-colors"
+                  >
+                    מה באמת קורה באימון הראשון, ואיך הוא יכול לשנות לילד שלכם את
+                    הביטחון העצמי?
+                  </h3>
+
+                  <p
+                    class="text-sm md:text-base text-[#E5E7EB]/80 max-w-xl ml-auto"
+                  >
+                    פירוק צעד-אחר-צעד של אימון ניסיון בקיקבוקס: איך נראה השיעור,
+                    איך מתמודדים עם ביישנות, ומה חשוב שהורה ידע לפני שמגיעים
+                    לאולם.
+                  </p>
+                </div>
+
+                <div
+                  class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+                >
+                  <p class="text-xs md:text-sm text-[#D1D5DB]/75 text-right">
+                    מתאים במיוחד להורים שמתלבטים אם להכניס את הילד למסגרת של
+                    אומנויות לחימה.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center rounded-full bg-[#F6C90E] px-6 py-2.5 text-xs md:text-sm font-semibold text-[#111827] shadow-[0_0_30px_rgba(246,201,14,0.55)] hover:bg-[#ffdd5c] transition-colors whitespace-nowrap"
+                  >
+                    לקריאת הכתבה המלאה
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- LIST OF LATEST POSTS -->
+            <div class="relative z-10 space-y-4">
+              <!-- Post 1 -->
+              <article
+                class="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-4 md:p-5 flex gap-4 items-stretch hover:bg-white/[0.06] hover:border-[#F6C90E]/70 transition-all"
+              >
+                <div
+                  class="hidden sm:block w-24 h-24 rounded-xl bg-[url('./assets/blog-post-2.jpg')] bg-cover bg-center"
+                ></div>
+
+                <div class="flex-1 flex flex-col text-right">
+                  <div
+                    class="flex items-center gap-2 justify-end mb-1 text-[11px]"
+                  >
+                    <span
+                      class="rounded-full bg-[#F6C90E]/15 px-2 py-0.5 text-[#F6C90E]"
+                    >
+                      הורים וילדים
+                    </span>
+                  </div>
+                  <h3
+                    class="text-sm md:text-base font-semibold mb-1 group-hover:text-[#F6C90E] transition-colors"
+                  >
+                    איך לדעת אם קיקבוקס מתאים לילד שלכם?
+                  </h3>
+                  <p class="text-xs md:text-sm text-[#E5E7EB]/70">
+                    סימנים שכדאי לשים לב אליהם, ומה קורה כשנותנים לילד מסגרת
+                    בריאה לפרוק אנרגיה.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center mt-3 rounded-full bg-[#F6C90E]/10 text-[#F6C90E] px-4 py-1.5 text-[11px] font-semibold hover:bg-[#F6C90E] hover:text-[#111827] transition-all shadow-sm whitespace-nowrap"
+                  >
+                    קראו את המאמר
+                  </a>
+                </div>
+              </article>
+
+              <!-- Post 2 -->
+              <article
+                class="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-4 md:p-5 flex gap-4 items-stretch hover:bg-white/[0.06] hover:border-emerald-400/70 transition-all"
+              >
+                <div
+                  class="hidden sm:block w-24 h-24 rounded-xl bg-[url('./assets/blog-post-3.jpg')] bg-cover bg-center"
+                ></div>
+
+                <div class="flex-1 flex flex-col text-right">
+                  <div
+                    class="flex items-center gap-2 justify-end mb-1 text-[11px]"
+                  >
+                    <span
+                      class="rounded-full bg-emerald-400/15 px-2 py-0.5 text-emerald-300"
+                    >
+                      HIIT וכושר
+                    </span>
+                  </div>
+                  <h3
+                    class="text-sm md:text-base font-semibold mb-1 group-hover:text-emerald-300 transition-colors"
+                  >
+                    איך לבנות אימון HIIT שלא שובר אתכם, אלא מחזק אתכם.
+                  </h3>
+                  <p class="text-xs md:text-sm text-[#E5E7EB]/70">
+                    איזון בין עצימות להתאוששות, ומה הטעות שהכי הרבה מתאמנים
+                    עושים בתחילת הדרך.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center mt-3 rounded-full bg-emerald-300/10 text-emerald-300 px-4 py-1.5 text-[11px] font-semibold hover:bg-emerald-300 hover:text-[#111827] transition-all shadow-sm whitespace-nowrap"
+                  >
+                    קראו את המאמר
+                  </a>
+                </div>
+              </article>
+
+              <!-- Post 3 -->
+              <article
+                class="group rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-4 md:p-5 flex gap-4 items-stretch hover:bg-white/[0.06] hover:border-sky-400/70 transition-all"
+              >
+                <div
+                  class="hidden sm:block w-24 h-24 rounded-xl bg-[url('./assets/blog-post-4.jpg')] bg-cover bg-center"
+                ></div>
+
+                <div class="flex-1 flex flex-col text-right">
+                  <div
+                    class="flex items-center gap-2 justify-end mb-1 text-[11px]"
+                  >
+                    <span
+                      class="rounded-full bg-sky-400/15 px-2 py-0.5 text-sky-300"
+                    >
+                      מיינדסט ותחרויות
+                    </span>
+                  </div>
+                  <h3
+                    class="text-sm md:text-base font-semibold mb-1 group-hover:text-sky-300 transition-colors"
+                  >
+                    לפני תחרות: איך להתמודד עם לחץ ופחד במה?
+                  </h3>
+                  <p class="text-xs md:text-sm text-[#E5E7EB]/70">
+                    כלים מנטליים לנוער לפני קרב, ומה התפקיד של ההורה רגע לפני
+                    שעולים לזירה.
+                  </p>
+                  <a
+                    href="#"
+                    class="inline-flex items-center justify-center mt-3 rounded-full bg-sky-300/10 text-sky-300 px-4 py-1.5 text-[11px] font-semibold hover:bg-sky-300 hover:text-[#111827] transition-all shadow-sm whitespace-nowrap"
+                  >
+                    קראו את המאמר
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- View all CTA -->
+          <div
+            class="fade-in-up mt-8 flex justify-center"
+            style="transition-delay: 0.25s"
+          >
+            <a
+              href="blog.html"
+              class="inline-flex items-center justify-center rounded-full border border-[#F6C90E] px-6 py-2.5 text-xs md:text-sm font-semibold text-[#F6C90E] hover:bg-[#F6C90E] hover:text-[#111827] transition-colors"
+            >
+              לכל המאמרים בבלוג
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER SECTION -->
+      <section
+        id="newsletter"
+        class="relative py-24 text-[#111827] overflow-hidden"
+      >
+        <!-- Video Background -->
+        <video
+          class="absolute inset-0 w-full h-full object-cover"
+          src="assets/newslette-bg.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+
+        <!-- White / 70 Overlay -->
+        <div class="absolute inset-0 bg-white/50 backdrop-blur"></div>
+
+        <div class="relative container mx-auto px-4">
+          <!-- Glass Card -->
+          <div
+            class="fade-in-up max-w-3xl mx-auto rounded-3xl p-10 md:p-14 border border-white/15 bg-white/5 backdrop-blur-4xl shadow-[0_8px_30px_rgba(0,0,0,.25)] text-right"
+          >
+            <!-- Heading -->
             <h2
-              id="cta-title"
-              class="text-3xl md:text-5xl font-black text-[#EEEEEE] mb-6"
+              class="text-3xl md:text-4xl font-black mb-3 leading-tight text-[#111827]"
             >
-              מוכנים להתחיל?
+              הצטרפו לקהילה שלנו
             </h2>
+
+            <!-- Description -->
             <p
-              class="text-lg md:text-xl text-[#EEEEEE]/90 mb-10 max-w-2xl mx-auto"
+              class="text-sm md:text-base text-[#374151]/80 mb-8 leading-relaxed"
             >
-              השאירו פרטים ותיאמנו איתכם שיעור ניסיון ללא התחייבות.
+              הרשמו לניוזלטר שלנו וקבלו עדכונים על אימונים, אירועים, תחרויות,
+              וטיפים מקצועיים מהמאמן.
             </p>
 
-            <form class="max-w-xl mx-auto grid gap-4 sm:grid-cols-2 text-right">
+            <!-- Form -->
+            <form class="flex flex-col sm:flex-row gap-4 items-stretch">
               <input
-                type="text"
-                name="name"
-                placeholder="שם מלא"
-                class="col-span-2 sm:col-span-1 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
+                type="email"
+                placeholder="הכניסו את כתובת האימייל"
+                class="flex-1 px-5 py-3 rounded-full bg-white/40 border border-black/10 text-right text-sm text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
+                required
               />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="מספר טלפון"
-                class="col-span-2 sm:col-span-1 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
-              />
-              <textarea
-                name="message"
-                rows="3"
-                placeholder="לאיזה סוג אימון אתם מחפשים להצטרף?"
-                class="col-span-2 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
-              ></textarea>
-              <div class="col-span-2">
-                <button
-                  type="submit"
-                  class="w-full sm:w-auto inline-flex justify-center bg-[#F6C90E] text-[#303841] hover:bg-[#F6C90E]/90 text-lg px-10 py-4 font-bold rounded-xl shadow-2xl transition-transform hover:scale-105"
-                >
-                  שלחו פרטים
-                </button>
-              </div>
+
+              <button
+                type="submit"
+                class="whitespace-nowrap px-8 py-3 rounded-full bg-[#F6C90E] text-[#111827] text-sm font-semibold hover:bg-[#ffd84f] transition-all hover:scale-105 shadow-[0_0_20px_rgba(246,201,14,0.55)]"
+              >
+                הירשם עכשיו
+              </button>
             </form>
           </div>
         </div>
@@ -944,187 +1179,158 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-[#303841] text-[#EEEEEE]/85 pt-12 pb-6 text-sm">
+    <footer class="bg-[#020308] text-[#E5E7EB] pt-12 pb-6 text-sm">
       <div class="container mx-auto px-4">
         <!-- Top row -->
-        <div class="grid gap-10 md:grid-cols-4 mb-8 text-right">
-          <!-- Col 1: Brand -->
-          <div>
-            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">MMA STUDIO</h3>
-            <p class="leading-relaxed">
-              אולפן מוביל לאומנויות לחימה מעורבות. מציעים אימונים מקצועיים עם
-              מאמנים מנוסים בסביבה מאתגרת ומעצימה.
+        <div
+          class="pb-8 mb-4 border-b border-white/10 md:flex md:flex-row md:justify-between gap-10"
+        >
+          <!-- Brand -->
+          <div class="md:w-1/2 flex flex-col items-start text-right gap-1">
+            <img
+              src="./assets/mma-logo.png"
+              alt="MMA Studio Logo"
+              class="h-28 w-auto object-contain"
+            />
+            <p class="leading-relaxed text-sm text-[#E5E7EB]">
+              אולפן מוביל לאומנויות לחימה מעורבות. אימונים מקצועיים עם מאמן אחד
+              שמלווה אתכם מהאימון הראשון ועד לזירה.
             </p>
           </div>
 
-          <!-- Col 2: Quick links -->
-          <div>
-            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">
-              קישורים מהירים
-            </h3>
-            <ul class="space-y-2">
+          <!-- Contact (-->
+          <div class="md:w-1/3 text-right">
+            <h3 class="text-[#F6C90E] font-semibold text-base mb-3">צור קשר</h3>
+            <ul class="space-y-2 mb-4">
               <li>
-                <a href="#hero" class="hover:text-white transition-colors">
-                  דף הבית
-                </a>
-              </li>
-              <li>
-                <a href="#programs" class="hover:text-white transition-colors">
-                  תוכניות אימון
-                </a>
-              </li>
-              <li>
-                <a href="about.html" class="hover:text-white transition-colors">
-                  אודות
-                </a>
-              </li>
-              <li>
-                <a href="#contact" class="hover:text-white transition-colors">
-                  צור קשר
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Col 3: Contact -->
-          <div>
-            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">צור קשר</h3>
-            <ul class="space-y-2">
-              <li>
-                <span class="inline-flex items-center gap-2">
-                  <span class="text-[#F6C90E]">📞</span>
+                <span class="inline-flex items-center gap-2 rtl:flex-row">
+                  <span class="text-[#F6C90E] text-base">📞</span>
                   <span>050-123-4567</span>
                 </span>
               </li>
               <li>
-                <span class="inline-flex items-center gap-2">
-                  <span class="text-[#F6C90E]">✉️</span>
+                <span class="inline-flex items-center gap-2 rtl:flex-row">
+                  <span class="text-[#F6C90E] text-base">✉️</span>
                   <span>info@mma-studio.co.il</span>
                 </span>
               </li>
               <li>
-                <span class="inline-flex items-center gap-2">
-                  <span class="text-[#F6C90E]">📍</span>
+                <span class="inline-flex items-center gap-2 rtl:flex-row">
+                  <span class="text-[#F6C90E] text-base">📍</span>
                   <span>רחוב הספורט 15, תל אביב</span>
                 </span>
               </li>
             </ul>
-          </div>
-
-          <!-- Col 4: Follow us -->
-          <div>
-            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">עקבו אחרינו</h3>
 
             <div class="flex items-center justify-start gap-3 mb-4">
-              <!-- Social icons as circles -->
               <a
                 href="#"
-                class="w-10 h-10 rounded-full bg-[#4a525c] flex items-center justify-center hover:bg-[#F6C90E] hover:text-[#303841] transition-colors"
+                class="w-9 h-9 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-xs font-semibold hover:bg-[#F6C90E] hover:text-[#111827] transition-colors"
                 aria-label="Instagram"
               >
-                ⧖
+                IG
               </a>
               <a
                 href="#"
-                class="w-10 h-10 rounded-full bg-[#4a525c] flex items-center justify-center hover:bg-[#F6C90E] hover:text-[#303841] transition-colors"
+                class="w-9 h-9 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-xs font-semibold hover:bg-[#F6C90E] hover:text-[#111827] transition-colors"
                 aria-label="Facebook"
               >
                 f
               </a>
             </div>
+          </div>
 
-            <div class="text-xs leading-relaxed text-[#EEEEEE]/70">
-              <div>שעות פעילות:</div>
-              <div>א׳-ה׳: 06:00-22:00</div>
-              <div>ו׳: 08:00-16:00</div>
-              <div>שבת: סגור</div>
-            </div>
+          <!-- Quick links  -->
+          <div class="md:w-1/3 text-right">
+            <h3 class="text-[#F6C90E] font-semibold text-base mb-3">
+              קישורים מהירים
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#hero" class="hover:text-[#F6C90E] transition-colors">
+                  דף הבית
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  class="hover:text-[#F6C90E] transition-colors"
+                >
+                  תוכניות אימון
+                </a>
+              </li>
+              <li>
+                <a href="#about" class="hover:text-[#F6C90E] transition-colors">
+                  אודות
+                </a>
+              </li>
+              <li>
+                <a href="#blog" class="hover:text-[#F6C90E] transition-colors">
+                  הבלוג שלנו
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="hover:text-[#F6C90E] transition-colors"
+                >
+                  צור קשר
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Useful Links -->
+          <div class="md:w-1/3 text-right">
+            <h3 class="text-[#F6C90E] font-semibold text-base mb-3">
+              תוכניות אימון
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-[#F6C90E] transition-colors">
+                  קיקבוקס לילדים ונוער
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-[#F6C90E] transition-colors">
+                  קיקבוקס מקצועי לנוער ותחרויות
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-[#F6C90E] transition-colors">
+                  אימוני HIIT לנוער ומבוגרים
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-[#F6C90E] transition-colors">
+                  מנוי לחדר כושר
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <!-- Divider -->
-        <div class="border-t border-[#EEEEEE]/15 pt-4 mt-2">
-          <div
-            class="flex flex-col md:flex-row items-center md:items-center justify-between gap-3"
-          >
-            <!-- Bottom left: legal links -->
-            <div class="flex gap-4 text-xs">
-              <a href="#" class="hover:text-white transition-colors">
-                תנאי שימוש
-              </a>
-              <a href="#" class="hover:text-white transition-colors">
-                מדיניות פרטיות
-              </a>
-            </div>
+        <!-- Bottom bar -->
+        <div
+          class="flex flex-col md:flex-row-reverse items-center justify-between gap-3 text-[11px] text-[#9CA3AF]"
+        >
+          <!-- Legal links -->
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-[#F6C90E] transition-colors">
+              תנאי שימוש
+            </a>
+            <a href="#" class="hover:text-[#F6C90E] transition-colors">
+              מדיניות פרטיות
+            </a>
+          </div>
 
-            <!-- Bottom right: copyright -->
-            <div class="text-xs text-[#EEEEEE]/70 text-center md:text-right">
-              © <span id="year"></span> MMA Studio. כל הזכויות שמורות.
-            </div>
+          <!-- Copyright -->
+          <div class="text-center md:text-left text-[#F6C90E]">
+            © <span id="year"></span> MMA Studio. כל הזכויות שמורות.
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- INTERACTIVITY JS -->
-    <script>
-      // dynamic year
-      document.getElementById("year").textContent = new Date().getFullYear();
-      const yearEl = document.getElementById("year");
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
-
-      // MOBILE MENU TOGGLE
-      const menuToggle = document.getElementById("menu-toggle");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const menuClose = document.getElementById("menu-close");
-
-      function openMenu() {
-        mobileMenu.classList.remove(
-          "opacity-0",
-          "scale-95",
-          "pointer-events-none"
-        );
-        mobileMenu.classList.add(
-          "opacity-100",
-          "scale-100",
-          "pointer-events-auto"
-        );
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.add(
-          "opacity-0",
-          "scale-95",
-          "pointer-events-none"
-        );
-        mobileMenu.classList.remove(
-          "opacity-100",
-          "scale-100",
-          "pointer-events-auto"
-        );
-      }
-
-      menuToggle.addEventListener("click", openMenu);
-      menuClose.addEventListener("click", closeMenu);
-
-      // Scroll-based fade in
-      const fadeEls = document.querySelectorAll(".fade-in-up");
-
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      fadeEls.forEach((el) => io.observe(el));
-    </script>
+    <script src="./main.js"></script>
   </body>
 </html>
