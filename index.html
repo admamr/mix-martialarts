@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mix Martial Arts | קיקבוקס ואומנויות לחימה</title>
+    <link href="/assets/mma-icon.png" rel="icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Scroll fade-in */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .fade-in-up.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @keyframes scroll-bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(10px);
+        }
+      }
+      .scroll-indicator {
+        animation: scroll-bounce 2s infinite;
+      }
+      .blob-yellow {
+        background: radial-gradient(circle at 30% 30%, #f6c90e33, transparent);
+      }
+    </style>
+  </head>
+  <body class="bg-[#0B0C10] text-[#EEEEEE]">
+    <!-- HEADER / NAVBAR -->
+    <header class="absolute inset-x-0 top-3 z-50 px-4">
+      <div class="container mx-auto px-4 mt-0">
+        <!-- Glass nav bar  -->
+        <div
+          class="max-w-5xl mx-auto flex items-center justify-between h-15 px-4 sm:px-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-4xl shadow-[0_8px_30px_rgba(0,0,0,.25)]"
+        >
+          <!-- Right side: Logo -->
+          <a href="index.html" class="flex items-center">
+            <img
+              src="./assets/mma-logo.png"
+              alt="MMA Studio Logo"
+              class="h-16 w-auto object-contain hover:scale-110 transition-all"
+            />
+          </a>
+
+          <!-- Desktop Nav -->
+          <nav
+            class="hidden md:flex items-center gap-6 text-sm font-medium text-[#EEEEEE]/80"
+          >
+            <a
+              href="#hero"
+              class="text-[#F6C90E] font-bold hover:text-[#F6C90E] transition-colors"
+            >
+              דף הבית
+            </a>
+            <a
+              href="#programs"
+              class="font-bold text-white hover:text-[#F6C90E] transition-colors"
+            >
+              תוכניות אימון
+            </a>
+            <a
+              href="about.html"
+              class="font-bold text-white hover:text-[#F6C90E] transition-colors"
+            >
+              אודות
+            </a>
+            <a
+              href="blog.html"
+              class="font-bold text-white hover:text-[#F6C90E] transition-colors"
+            >
+              בלוג
+            </a>
+          </nav>
+
+          <!-- Desktop CTA + mobile burger -->
+          <div class="flex items-center gap-3">
+            <!-- Desktop CTA -->
+            <a
+              href="#contact"
+              class="hidden sm:inline-flex items-center justify-center rounded-full bg-[#F6C90E] px-4 py-1.5 text-xs font-bold text-[#303841] hover:bg-[#F6C90E]/90 transition-transform hover:scale-105 shadow-md"
+            >
+              צור קשר
+            </a>
+
+            <!-- Mobile menu button -->
+            <button
+              id="menu-toggle"
+              class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-[#EEEEEE]/40 text-[#EEEEEE]"
+              aria-label="תפריט"
+              aria-expanded="false"
+            >
+              <svg
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.8"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Backdrop -->
+        <div
+          id="mobileBackdrop"
+          class="fixed inset-0 bg-black/40 hidden md:hidden"
+        ></div>
+
+        <!-- MOBILE DROPDOWN MENU -->
+        <nav
+          id="mobile-menu"
+          class="md:hidden max-w-5xl mx-auto mt-2 px-4 py-6 rounded-2xl rounded-2xl border border-white/15 bg-white/5 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,.25)] transition-all duration-300 will-change-transform transform scale-95 opacity-0 pointer-events-none relative"
+        >
+          <!-- Close button -->
+          <button
+            id="menu-close"
+            class="absolute top-4 left-4 w-8 h-8 rounded-full border border-[#EEEEEE]/40 flex items-center justify-center text-[#EEEEEE] hover:bg-white/10 transition"
+            aria-label="סגור תפריט"
+          >
+            ✕
+          </button>
+
+          <div class="space-y-3 text-right pr-2">
+            <a href="#hero" class="block hover:text-[#F6C90E]">דף הבית</a>
+            <a href="#programs" class="block hover:text-[#F6C90E]"
+              >תוכניות אימון</a
+            >
+            <a href="about.html" class="block hover:text-[#F6C90E]">אודות</a>
+            <a href="blog.html" class="block hover:text-[#F6C90E]">בלוג</a>
+
+            <a
+              href="#contact"
+              class="mt-4 inline-flex w-full justify-center rounded-full bg-[#F6C90E] px-4 py-2 text-xs font-bold text-[#303841] hover:bg-[#F6C90E]/90"
+            >
+              צור קשר
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- HERO -->
+      <section
+        id="hero"
+        class="relative h-[110svh] -mt-16 flex items-center justify-center overflow-hidden"
+        aria-labelledby="hero-title"
+      >
+        <!-- Background image -->
+        <div
+          class="absolute inset-0 bg-[url('./assets/boxer-in-action.png')] bg-cover bg-center"
+          alt="Boxer in Action"
+        ></div>
+
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-[#303841]/70"></div>
+
+        <!-- Accent blob -->
+        <div
+          class="blob-yellow pointer-events-none absolute -top-32 -left-32 h-72 w-72 rounded-full opacity-70"
+        ></div>
+
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-4">
+          <div class="max-w-3xl ml-auto text-right">
+            <p
+              class="inline-flex items-center rounded-full border border-[#F6C90E]/40 bg-[#0B0C10]/60 px-4 py-2 text-sm font-medium tracking-wide text-[#F6C90E] mb-4"
+            >
+              MMA • קיקבוקס • כושר פונקציונלי
+            </p>
+
+            <h1
+              id="hero-title"
+              class="text-4xl md:text-6xl lg:text-7xl font-black text-[#EEEEEE] mb-4 leading-tight"
+            >
+              האתגר המושלם
+              <span class="block text-[#F6C90E] mt-2">מתחיל כאן</span>
+            </h1>
+
+            <p
+              class="text-lg md:text-2xl text-[#EEEEEE]/90 mb-8 leading-relaxed"
+            >
+              הצטרפו לאולפן המוביל לאומנויות לחימה מעורבות והפכו לגרסה הטובה
+              ביותר של עצמכם בכל גיל ובכל רמת כושר.
+            </p>
+
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-start items-stretch mb-6"
+            >
+              <a
+                href="#programs"
+                class="w-full sm:w-auto inline-flex items-center justify-center bg-[#F6C90E] text-[#303841] hover:bg-[#F6C90E]/90 text-lg px-8 py-4 font-bold shadow-2xl transition-transform hover:scale-105 rounded-xl"
+              >
+                תוכניות אימון
+              </a>
+              <a
+                href="#contact"
+                class="w-full sm:w-auto inline-flex items-center justify-center border-2 border-[#EEEEEE] text-[#EEEEEE] hover:bg-[#EEEEEE] hover:text-[#303841] text-lg px-8 py-4 font-bold shadow-2xl transition-transform hover:scale-105 rounded-xl"
+              >
+                שיעור ניסיון חינם
+              </a>
+            </div>
+
+            <div
+              class="flex flex-wrap gap-4 justify-start text-sm text-[#EEEEEE]/70"
+            >
+              <div>500+ מתאמנים פעילים</div>
+              <span class="h-4 w-px bg-[#EEEEEE]/30"></span>
+              <div>קבוצות לנוער, נשים וגברים</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+          class="scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2"
+        >
+          <button
+            type="button"
+            aria-label="גלילה למטה"
+            onclick="document.getElementById('why-us').scrollIntoView({ behavior: 'smooth' })"
+            class="w-7 h-12 border-2 border-[#F6C90E] rounded-full flex justify-center items-start"
+          >
+            <div class="w-1 h-3 bg-[#F6C90E] rounded-full mt-2"></div>
+          </button>
+        </div>
+      </section>
+
+      <!-- WHY US / FEATURES -->
+      <section
+        id="why-us"
+        class="py-20 bg-white/70 text-[#EEEEEE]"
+        aria-labelledby="why-us-title"
+      >
+        <div class="container mx-auto px-4">
+          <!-- Main grid wrapper -->
+          <div
+            class="fade-in-up grid gap-6 lg:grid-cols-5 rounded-3xl border border-white/10 bg-gradient-to-br from-[#151820] via-[#10131a] to-[#111827] p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.55)] relative overflow-hidden"
+            style="transition-delay: 0.1s"
+          >
+            <!-- Subtle background grid lines -->
+            <div
+              class="pointer-events-none absolute inset-0 opacity-[0.12]"
+              style="
+                background-image: linear-gradient(
+                    to right,
+                    rgba(148, 163, 184, 0.35) 1px,
+                    transparent 1px
+                  ),
+                  linear-gradient(
+                    to bottom,
+                    rgba(148, 163, 184, 0.35) 1px,
+                    transparent 1px
+                  );
+                background-size: 80px 80px;
+              "
+            ></div>
+
+            <!-- LEFT SIDE: Stats + Big Message -->
+            <div class="relative z-10 lg:col-span-3 space-y-6">
+              <!-- Top stats row -->
+              <div class="grid gap-4 sm:grid-cols-2">
+                <!-- Stat card 1 -->
+                <article
+                  data-tilt
+                  class="fade-in-up interactive-card rounded-2xl border border-white/15 bg-white/5 px-5 py-4 shadow-lg backdrop-blur-xl transition-all hover:border-[#F6C90E] hover:bg-gradient-to-br hover:from-[#F6C90E]/18 hover:via-[#22c55e]/14 hover:to-transparent"
+                  style="transition-delay: 0.15s"
+                >
+                  <div
+                    class="text-2xl md:text-3xl font-bold text-[#F6C90E] mb-1"
+                  >
+                    250+
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wide text-[#EEEEEE]/70 mb-2"
+                  >
+                    מתאמנים פעילים
+                  </div>
+                  <p class="text-sm text-[#EEEEEE]/70 leading-relaxed">
+                    קהילה חזקה של מתאמנים בכל הרמות – מתחילים, מתקדמים ונוער.
+                  </p>
+                </article>
+
+                <!-- Stat card 2 -->
+                <article
+                  data-tilt
+                  class="fade-in-up interactive-card rounded-2xl border border-white/15 bg-white/5 px-5 py-4 shadow-lg backdrop-blur-xl transition-all hover:border-[#F6C90E] hover:bg-gradient-to-br hover:from-[#F6C90E]/18 hover:via-[#22c55e]/14 hover:to-transparent"
+                  style="transition-delay: 0.22s"
+                >
+                  <div
+                    class="text-2xl md:text-3xl font-bold text-[#F6C90E] mb-1"
+                  >
+                    10+
+                  </div>
+                  <div
+                    class="text-xs uppercase tracking-wide text-[#EEEEEE]/70 mb-2"
+                  >
+                    שנות ניסיון
+                  </div>
+                  <p class="text-sm text-[#EEEEEE]/70 leading-relaxed">
+                    מאמן מנוסה בקרבות זירה, קיקבוקס, קרב מגע ואימוני כושר.
+                  </p>
+                </article>
+              </div>
+
+              <!-- Big message card -->
+              <article
+                class="fade-in-up rounded-2xl border border-white/15 bg-white/5 px-5 md:px-7 py-6 flex flex-col justify-between backdrop-blur-xl"
+                style="transition-delay: 0.28s"
+              >
+                <div class="mb-4">
+                  <p
+                    class="text-xs uppercase tracking-[0.35em] text-[#F6C90E] mb-3"
+                  >
+                    השלב הבא באימונים שלך
+                  </p>
+                  <h3
+                    class="text-2xl md:text-4xl font-black leading-tight mb-3"
+                  >
+                    שחררו את<br class="hidden sm:block" />
+                    הלוחם הפנימי שלכם.
+                  </h3>
+                  <p class="text-sm md:text-base text-[#EEEEEE]/80 max-w-xl">
+                    אימונים שנבנים סביבכם: טכניקה, כוח מנטלי, כושר ושמירה על
+                    שגרת חיים בריאה. אנחנו איתכם בכל סיבוב – מהאימון הראשון ועד
+                    הקרב הבא.
+                  </p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                  <!-- avatars -->
+                  <div class="flex -space-x-2 rtl:space-x-reverse">
+                    <div
+                      class="w-8 h-8 rounded-full bg-[url('https://images.pexels.com/photos/799166/pexels-photo-799166.jpeg')] bg-cover bg-center border border-[#0B0C10]"
+                    ></div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-[url('https://images.pexels.com/photos/1468379/pexels-photo-1468379.jpeg')] bg-cover bg-center border border-[#0B0C10]"
+                    ></div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-[url('https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg')] bg-cover bg-center border border-[#0B0C10]"
+                    ></div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-[#F6C90E] text-[#303841] flex items-center justify-center text-xs font-bold border border-[#0B0C10]"
+                    >
+                      +
+                    </div>
+                  </div>
+
+                  <a
+                    href="#contact"
+                    class="inline-flex items-center justify-center rounded-full border border-[#F6C90E] px-5 py-2 text-xs md:text-sm font-semibold text-[#F6C90E] hover:bg-[#F6C90E] hover:text-[#303841] transition-colors"
+                  >
+                    קבעו שיעור ניסיון
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- RIGHT SIDE: Full-image background card -->
+            <aside
+              class="fade-in-up relative z-10 lg:col-span-2 rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-[url('./assets/Determined-Pose.png')] bg-cover bg-center flex flex-col justify-between"
+              style="transition-delay: 0.34s"
+            >
+              <!-- Dark overlay -->
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black/85"
+              ></div>
+
+              <!-- Top text -->
+              <div class="relative p-6 md:p-7 text-right">
+                <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                  קבעו פגישה<br />
+                  וגלו איך זה מרגיש<br />
+                  להיות לוחם.
+                </h3>
+              </div>
+
+              <!-- Bottom CTA -->
+              <div
+                class="relative px-6 pb-6 pt-3 flex items-center justify-between text-xs md:text-sm"
+              >
+                <p class="text-[#E5E7EB]/80 max-w-[60%]">
+                  קבלו הצצה לתהליך, הכירו את המאמן וקבלו תוכנית מותאמת לכם.
+                </p>
+                <a
+                  href="#contact"
+                  class="inline-flex items-center gap-2 rounded-full border border-[#F6C90E] px-5 py-2 text-xs font-semibold text-[#F6C90E] bg-black/20 hover:bg-[#EEEEEE]/15 hover:text-[#EEEEEE] hover:border-[#EEEEEE] transition-colors"
+                >
+                  <span>דברו איתנו</span>
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMS SECTION -->
+      <section
+        id="programs"
+        class="py-20 bg-[#05060A] text-[#F9FAFB]"
+        aria-labelledby="programs-title"
+      >
+        <div class="container mx-auto px-4">
+          <!-- Heading -->
+          <div class="max-w-3xl ml-auto text-right mb-10 fade-in-up">
+            <p
+              class="text-xs font-semibold tracking-[0.3em] uppercase text-[#F6C90E] mb-2"
+            >
+              תוכניות אימון
+            </p>
+            <h2
+              id="programs-title"
+              class="text-3xl md:text-4xl lg:text-5xl font-black mb-3 leading-tight"
+            >
+              מצאו את מסלול האימון שמתאים לכם
+            </h2>
+            <p class="text-sm md:text-base text-[#E5E7EB]/70">
+              כל תוכנית נבנתה ומנוהלת על ידי אותו מאמן אחד, בשיטה אחידה וברורה –
+              כדי שתראו תוצאות אמיתיות, לא משנה מאיפה אתם מתחילים.
+            </p>
+          </div>
+
+          <!-- Grid wrapper -->
+          <div
+            class="fade-in-up rounded-3xl border border-white/10 bg-gradient-to-br from-[#05060A] via-[#050814] to-[#020617] p-6 md:p-8 shadow-[0_22px_70px_rgba(0,0,0,0.8)] relative overflow-hidden"
+            style="transition-delay: 0.1s"
+          >
+            <div
+              class="pointer-events-none absolute inset-0 opacity-[0.16]"
+              style="
+                background-image: linear-gradient(
+                    to right,
+                    rgba(148, 163, 184, 0.35) 1px,
+                    transparent 1px
+                  ),
+                  linear-gradient(
+                    to bottom,
+                    rgba(148, 163, 184, 0.35) 1px,
+                    transparent 1px
+                  );
+                background-size: 90px 90px;
+              "
+            ></div>
+
+            <div class="relative z-10 grid gap-6 lg:grid-cols-4">
+              <!-- CARD 1: Kids–Teens Kickboxing -->
+              <article
+                data-tilt
+                class="fade-in-up h-[400px] md:h-[450px] rounded-3xl border border-white/12 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#F6C90E]"
+                style="transition-delay: 0.16s"
+              >
+                <!-- Background image + overlay -->
+                <div class="relative h-full w-full">
+                  <div
+                    class="absolute inset-0 bg-[url('./assets/kids-program.avif')] bg-cover bg-center"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/65 to-black/90"
+                  ></div>
+
+                  <!-- Content -->
+                  <div
+                    class="relative z-10 px-5 py-6 flex flex-col h-full justify-between"
+                  >
+                    <header class="mb-4 space-y-3">
+                      <span
+                        class="inline-flex items-center rounded-full bg-[#F6C90E]/20 px-3 py-1 text-[11px] font-semibold text-[#F6C90E]"
+                      >
+                        🟡 גילאי 6–13
+                      </span>
+                      <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                        קיקבוקס לילדים ונוער צעיר
+                      </h3>
+                      <p
+                        class="text-xs uppercase tracking-[0.2em] text-[#E5E7EB]/70"
+                      >
+                        ביטחון עצמי · משמעת · בסיס טכני
+                      </p>
+                    </header>
+
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs mt-auto"
+                    >
+                      <span class="text-[#E5E7EB]/75">
+                        2–3 אימונים בשבוע · מתאים ללא ניסיון
+                      </span>
+                      <span
+                        class="inline-flex items-center justify-center text-[10px] px-2 py-1 rounded-full bg-black/60 border border-white/15 whitespace-nowrap"
+                      >
+                        STARTER LEVEL
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- CARD 2: Pro Teens Kickboxing -->
+              <article
+                data-tilt
+                class="fade-in-up h-[400px] md:h-[450px] rounded-3xl border border-white/14 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-red-400/80"
+                style="transition-delay: 0.22s"
+              >
+                <div class="relative h-full w-full">
+                  <div
+                    class="absolute inset-0 bg-[url('./assets/teen-program.avif')] bg-cover bg-center"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/65 to-black/90"
+                  ></div>
+
+                  <div
+                    class="relative z-10 px-5 py-6 flex flex-col h-full justify-between"
+                  >
+                    <header class="mb-4 space-y-3">
+                      <span
+                        class="inline-flex items-center rounded-full bg-red-500/20 px-3 py-1 text-[11px] font-semibold text-red-300"
+                      >
+                        🔴 גילאי 14+ · מסלול תחרותי
+                      </span>
+                      <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                        קיקבוקס מקצועי לנוער ותחרויות
+                      </h3>
+                      <p
+                        class="text-xs uppercase tracking-[0.25em] text-[#FCA5A5]/85"
+                      >
+                        PRO SERIES
+                      </p>
+                    </header>
+
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs mt-auto"
+                    >
+                      <span class="text-[#E5E7EB]/75">
+                        3–4 אימונים בשבוע · דרוש בסיס קודם
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1 text-[11px] text-[#FECACA] whitespace-nowrap"
+                      >
+                        <span>🥇</span>
+                        <span
+                          class="inline-flex items-center justify-center text-[10px] px-2 py-1 rounded-full bg-black/70 border border-white/15 whitespace-nowrap"
+                          >יעדים · מדליות</span
+                        >
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- CARD 3: HIIT Bootcamp -->
+              <article
+                data-tilt
+                class="fade-in-up h-[400px] md:h-[450px] rounded-3xl border border-emerald-400/40 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-emerald-400"
+                style="transition-delay: 0.28s"
+              >
+                <div class="relative h-full w-full">
+                  <div
+                    class="absolute inset-0 bg-[url('./assets/Hiit-Workout.jpg')] bg-cover bg-center"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/65 to-black/90"
+                  ></div>
+
+                  <div
+                    class="relative z-10 px-5 py-6 flex flex-col h-full justify-between"
+                  >
+                    <header class="mb-4 space-y-3">
+                      <span
+                        class="inline-flex items-center rounded-full bg-emerald-400/20 px-3 py-1 text-[11px] font-semibold text-emerald-300"
+                      >
+                        🟢 גילאי 16+ · HIIT BOOTCAMP
+                      </span>
+                      <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                        אימוני HIIT לנוער ומבוגרים
+                      </h3>
+                      <p
+                        class="text-xs uppercase tracking-[0.2em] text-[#A7F3D0]/85"
+                      >
+                        כוח · חיטוב · קצב גבוה
+                      </p>
+                    </header>
+
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs mt-auto"
+                    >
+                      <span class="text-[#E5E7EB]/75">
+                        2–3 אימונים בשבוע · מתאים 16+
+                      </span>
+                      <span
+                        class="inline-flex items-center gap-1 text-emerald-300 text-[11px] whitespace-nowrap"
+                      >
+                        <span
+                          class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"
+                        ></span>
+                        <span
+                          class="inline-flex items-center justify-center text-[10px] px-2 py-1 rounded-full bg-black/70 border border-white/15 whitespace-nowrap"
+                          >HIGH INTENSITY</span
+                        >
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- CARD 4: Gym Membership -->
+              <article
+                data-tilt
+                class="fade-in-up h-[400px] md:h-[450px] rounded-3xl border border-white/14 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#F6C90E]/80"
+                style="transition-delay: 0.34s"
+              >
+                <div class="relative h-full w-full">
+                  <div
+                    class="absolute inset-0 bg-[url('./assets/equiped-gym.avif')] bg-cover bg-center"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/65 to-black/90"
+                  ></div>
+
+                  <div
+                    class="relative z-10 px-5 py-6 flex flex-col h-full justify-between"
+                  >
+                    <header class="mb-4 space-y-3">
+                      <span
+                        class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold text-[#F9FAFB]"
+                      >
+                        ⚪ מנוי חדר כושר
+                      </span>
+                      <h3 class="text-xl md:text-2xl font-bold leading-snug">
+                        חדר כושר מלא – לכל מטרה
+                      </h3>
+                      <p
+                        class="text-xs uppercase tracking-[0.18em] text-[#D1D5DB]/85"
+                      >
+                        משקולות · מכונות · קרדיו
+                      </p>
+                    </header>
+
+                    <div
+                      class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs mt-auto"
+                    >
+                      <span class="text-[#E5E7EB]/75">
+                        גישה לפי מנוי · אפשרות לשילוב ליווי אישי
+                      </span>
+                      <span
+                        class="inline-flex items-center justify-center text-[10px] px-2 py-1 rounded-full bg-black/70 border border-white/15 whitespace-nowrap"
+                      >
+                        OPEN GYM
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div
+              class="relative z-10 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 fade-in-up"
+              style="transition-delay: 0.4s"
+            >
+              <p class="text-sm md:text-base text-[#E5E7EB]/75 text-right">
+                לא בטוחים מאיפה להתחיל? ספרו למאמן מה המטרה שלכם – והוא יתאים
+                לכם את המסלול הנכון, או ישלב בין כמה תוכניות כדי שתראו תוצאות
+                מהר.
+              </p>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 rounded-full border border-[#F6C90E] px-5 py-2 text-xs font-semibold text-[#F6C90E] bg-black/20 hover:bg-[#EEEEEE]/15 hover:text-[#EEEEEE] hover:border-[#EEEEEE] transition-colors] px-6 py-2.5 text-xs md:text-sm"
+              >
+                קבעו שיעור ניסיון חינם
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA / CONTACT -->
+      <section
+        id="contact"
+        class="py-20 bg-[#EEEEEE]"
+        aria-labelledby="cta-title"
+      >
+        <div class="container mx-auto px-4">
+          <div
+            class="relative bg-gradient-to-br from-[#303841] to-[#3a4149] rounded-3xl p-10 md:p-16 text-center shadow-2xl overflow-hidden"
+          >
+            <div
+              class="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-[#F6C90E]/10 blur-3xl"
+            ></div>
+
+            <h2
+              id="cta-title"
+              class="text-3xl md:text-5xl font-black text-[#EEEEEE] mb-6"
+            >
+              מוכנים להתחיל?
+            </h2>
+            <p
+              class="text-lg md:text-xl text-[#EEEEEE]/90 mb-10 max-w-2xl mx-auto"
+            >
+              השאירו פרטים ותיאמנו איתכם שיעור ניסיון ללא התחייבות.
+            </p>
+
+            <form class="max-w-xl mx-auto grid gap-4 sm:grid-cols-2 text-right">
+              <input
+                type="text"
+                name="name"
+                placeholder="שם מלא"
+                class="col-span-2 sm:col-span-1 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="מספר טלפון"
+                class="col-span-2 sm:col-span-1 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
+              />
+              <textarea
+                name="message"
+                rows="3"
+                placeholder="לאיזה סוג אימון אתם מחפשים להצטרף?"
+                class="col-span-2 rounded-xl px-4 py-3 bg-[#1f2430] text-[#EEEEEE] placeholder:text-[#EEEEEE]/50 focus:outline-none focus:ring-2 focus:ring-[#F6C90E]"
+              ></textarea>
+              <div class="col-span-2">
+                <button
+                  type="submit"
+                  class="w-full sm:w-auto inline-flex justify-center bg-[#F6C90E] text-[#303841] hover:bg-[#F6C90E]/90 text-lg px-10 py-4 font-bold rounded-xl shadow-2xl transition-transform hover:scale-105"
+                >
+                  שלחו פרטים
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#303841] text-[#EEEEEE]/85 pt-12 pb-6 text-sm">
+      <div class="container mx-auto px-4">
+        <!-- Top row -->
+        <div class="grid gap-10 md:grid-cols-4 mb-8 text-right">
+          <!-- Col 1: Brand -->
+          <div>
+            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">MMA STUDIO</h3>
+            <p class="leading-relaxed">
+              אולפן מוביל לאומנויות לחימה מעורבות. מציעים אימונים מקצועיים עם
+              מאמנים מנוסים בסביבה מאתגרת ומעצימה.
+            </p>
+          </div>
+
+          <!-- Col 2: Quick links -->
+          <div>
+            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">
+              קישורים מהירים
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#hero" class="hover:text-white transition-colors">
+                  דף הבית
+                </a>
+              </li>
+              <li>
+                <a href="#programs" class="hover:text-white transition-colors">
+                  תוכניות אימון
+                </a>
+              </li>
+              <li>
+                <a href="about.html" class="hover:text-white transition-colors">
+                  אודות
+                </a>
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-white transition-colors">
+                  צור קשר
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Contact -->
+          <div>
+            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">צור קשר</h3>
+            <ul class="space-y-2">
+              <li>
+                <span class="inline-flex items-center gap-2">
+                  <span class="text-[#F6C90E]">📞</span>
+                  <span>050-123-4567</span>
+                </span>
+              </li>
+              <li>
+                <span class="inline-flex items-center gap-2">
+                  <span class="text-[#F6C90E]">✉️</span>
+                  <span>info@mma-studio.co.il</span>
+                </span>
+              </li>
+              <li>
+                <span class="inline-flex items-center gap-2">
+                  <span class="text-[#F6C90E]">📍</span>
+                  <span>רחוב הספורט 15, תל אביב</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Follow us -->
+          <div>
+            <h3 class="text-[#F6C90E] font-bold text-lg mb-3">עקבו אחרינו</h3>
+
+            <div class="flex items-center justify-start gap-3 mb-4">
+              <!-- Social icons as circles -->
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-[#4a525c] flex items-center justify-center hover:bg-[#F6C90E] hover:text-[#303841] transition-colors"
+                aria-label="Instagram"
+              >
+                ⧖
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-[#4a525c] flex items-center justify-center hover:bg-[#F6C90E] hover:text-[#303841] transition-colors"
+                aria-label="Facebook"
+              >
+                f
+              </a>
+            </div>
+
+            <div class="text-xs leading-relaxed text-[#EEEEEE]/70">
+              <div>שעות פעילות:</div>
+              <div>א׳-ה׳: 06:00-22:00</div>
+              <div>ו׳: 08:00-16:00</div>
+              <div>שבת: סגור</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-[#EEEEEE]/15 pt-4 mt-2">
+          <div
+            class="flex flex-col md:flex-row items-center md:items-center justify-between gap-3"
+          >
+            <!-- Bottom left: legal links -->
+            <div class="flex gap-4 text-xs">
+              <a href="#" class="hover:text-white transition-colors">
+                תנאי שימוש
+              </a>
+              <a href="#" class="hover:text-white transition-colors">
+                מדיניות פרטיות
+              </a>
+            </div>
+
+            <!-- Bottom right: copyright -->
+            <div class="text-xs text-[#EEEEEE]/70 text-center md:text-right">
+              © <span id="year"></span> MMA Studio. כל הזכויות שמורות.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERACTIVITY JS -->
+    <script>
+      // dynamic year
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // MOBILE MENU TOGGLE
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuClose = document.getElementById("menu-close");
+
+      function openMenu() {
+        mobileMenu.classList.remove(
+          "opacity-0",
+          "scale-95",
+          "pointer-events-none"
+        );
+        mobileMenu.classList.add(
+          "opacity-100",
+          "scale-100",
+          "pointer-events-auto"
+        );
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.add(
+          "opacity-0",
+          "scale-95",
+          "pointer-events-none"
+        );
+        mobileMenu.classList.remove(
+          "opacity-100",
+          "scale-100",
+          "pointer-events-auto"
+        );
+      }
+
+      menuToggle.addEventListener("click", openMenu);
+      menuClose.addEventListener("click", closeMenu);
+
+      // Scroll-based fade in
+      const fadeEls = document.querySelectorAll(".fade-in-up");
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      fadeEls.forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
